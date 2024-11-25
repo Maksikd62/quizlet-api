@@ -104,6 +104,7 @@ builder.Services.AddControllers();
 
 // Add automapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddOpenApi();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -151,6 +152,8 @@ var app = builder.Build();
 //app.UseSwaggerUI();
 
 app.UseCors(MyAllowSpecificOrigins);
+
+app.MapOpenApi();
 
 app.UseMiddleware<MiddlewareExceptionHandling>();
 app.UseMiddleware<MiddlewareJwtTokenExceptionHandling>();
